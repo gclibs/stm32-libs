@@ -76,7 +76,9 @@ int main(void){
 	while (1) {
 		freq = TIM3->CCR1;
 		duty_cycle = TIM3->CCR2;
-		pwm = duty_cycle/(freq/100);
+		if (freq>0) {
+			pwm = duty_cycle/(freq/100);
+		}
 		HAL_Delay(10);
 	}
 }
